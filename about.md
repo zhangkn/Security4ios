@@ -207,6 +207,14 @@ type: Document
         </li>
 
         <li>
+            <img class="picture" src="/images/head/tinker.jpeg" alt="">
+            <dl class="desc">
+                <dt>tinker </dt>
+                <dd>I don't work like that. It's not professional.</dd>
+            </dl>
+        </li>
+
+        <li>
             <img class="picture" src="/images/head/Weiho.png" alt="">
             <dl class="desc">
                 <dt>Weiho</dt>
