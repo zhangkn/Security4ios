@@ -91,5 +91,4 @@ types:
 
 _comments:
 
-include:
-  _headers
+include: ["_headers"]
