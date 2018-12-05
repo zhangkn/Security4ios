@@ -1,0 +1,110 @@
+site_name: Security Paper
+site_description: 所有文档均由中国互联网一线安全工程师编写整理
+site_author: Security Paper
+site_url: https://www.securitypaper.org
+
+# Repository
+repo_name: SecurityPaper/SecurityPaper-web
+repo_url: https://github.com/SecurityPaper/SecurityPaper-web
+edit_uri: "https://github.com/SecurityPaper/SecurityPaper-web"
+
+# Copyright
+copyright: 'Copyright &copy; 2016 - 2018 SecurityPaper'
+
+# Configuration
+theme:
+  name: null
+  custom_dir: SecurityPaper-themes
+
+  logo: "/images/logo.svg"
+  # feature:
+  #   tabs: true
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: zh
+  feature:
+    tabs: true
+  palette:
+    primary: light blue
+    accent: light blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.png
+  highlightjs: true
+
+
+# Customization
+# extra:
+#   social:
+#     - type: globe
+#       link: https://www.securitypaper.org/
+#     - type: github-alt
+#       link: https://github.com/SecurityPaper/SecurityPaper-web/
+
+
+# Extensions
+# markdown_extensions:
+#   - markdown.extensions.admonition
+#   - markdown.extensions.codehilite:
+#       guess_lang: false
+#   - markdown.extensions.def_list
+#   - markdown.extensions.footnotes
+#   - markdown.extensions.meta
+#   - markdown.extensions.toc:
+#       permalink: true
+#   - pymdownx.arithmatex
+#   - pymdownx.betterem:
+#       smart_enable: all
+#   - pymdownx.caret
+#   - pymdownx.critic
+#   - pymdownx.details
+#   # - pymdownx.emoji:
+#   #     emoji_generator: !!python/name:pymdownx.emoji.to_svg
+#   - pymdownx.inlinehilite
+#   - pymdownx.keys
+#   - pymdownx.magiclink
+#   - pymdownx.mark
+#   - pymdownx.smartsymbols
+#   - pymdownx.superfences
+#   - pymdownx.tasklist:
+#       custom_checkbox: true
+#   - pymdownx.tilde
+
+# markdown_extensions:
+#   - admonition
+#   - codehilite:
+#       guess_lang: false
+#   - toc:
+#       permalink: true
+
+# Page tree
+# nav:
+#   - 首页: index.md
+#   - Extensions:
+#     - Admonition: SDL_introduction/1.什么是SDL.md
+#     - CodeHilite: SDL_introduction/2.企业为什么需求SDL.md
+#     - Footnotes: SDL_introduction/footnotes.md
+#     - Metadata: SDL_introduction/metadata.md
+#     - Permalinks: SDL_introduction/permalinks.md
+#     - PyMdown: SDL_introduction/pymdown.md
+#   - Specimen: specimen.md
+#   - Customization: customization.md
+#   - Compliance with GDPR: compliance.md
+#   - Release notes: release-notes.md
+#   - Author's notes: authors-notes.md
+#   - Contributing: contributing.md
+#   - License: license.md
+
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
