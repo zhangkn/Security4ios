@@ -193,7 +193,7 @@
             <img class="picture" src="/images/head/lost_maniac.jpeg" alt="">
             <dl class="desc">
                 <dt>Lost Maniac</dt>
-                <dd>SDL China发起人，美图安全经理</dd>
+                <dd>SecurityPaper发起人，美图安全经理</dd>
             </dl>
         </li>
 
