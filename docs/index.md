@@ -88,7 +88,7 @@
             <img class="picture" src="/images/head/chuanguosuiyuebulao.jpeg" alt="">
             <dl class="desc">
                 <dt>穿过岁月不老</dt>
-                <dd>人生就像蜡烛 ，站不正必然泪多命短 ！.</dd>
+                <dd>人生就像蜡烛 ，站不正 必然泪多命短！</dd>
             </dl>
         </li>
         <li>
@@ -232,6 +232,14 @@
             <dl class="desc">
                 <dt>tinker </dt>
                 <dd>I don't work like that. It's not professional.</dd>
+            </dl>
+        </li>
+
+        <li>
+            <img class="picture" src="/images/head/yiming.png" alt="">
+            <dl class="desc">
+                <dt>Torjan </dt>
+                <dd>Torjan</dd>
             </dl>
         </li>
 
