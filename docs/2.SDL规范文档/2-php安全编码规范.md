@@ -121,3 +121,14 @@ connect($uname, $password);
 ```
 
 ---
+###2.4  关闭危险函数
+有时为了安全，我们不希望执行包括system()等在那的能够执行命令的php函数，或者能够查看php（）信息的
+　　phpinfo()等函数，那么我们就可以禁止比如：
+　　disable_functions = system,passthru,exec,shell_exec,popen,phpinfo
+　　如果你要禁止任何文件和目录的操作，那么可以关闭很多文件操作
+　　disable_functions = chdir,chroot,dir,getcwd,opendir,readdir,scandir,fopen,unlink,delete,copy,mkdir, 　　rmdir,rename,file,file_get_contents,fputs,fwrite,chgrp,chmod,chown
+　　这里只是列了部分不叫常用的文件处理函数，可以把上面执行命令函数和这个函数结合，
+　　就能够抵制大部分的phpshell了。
+  
+  
+  
