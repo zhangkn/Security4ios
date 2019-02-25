@@ -92,6 +92,14 @@
             </dl>
         </li>
         <li>
+            <img class="picture" src="/images/head/cloudwafs.jpeg" alt="">
+            <dl class="desc">
+                <dt>Cloudwafs</dt>
+                <dd>Always Be Ready!</dd>
+            </dl>
+        </li>
+        
+        <li>
             <img class="picture" src="/images/head/doubiduo.jpeg" alt="">
             <dl class="desc">
                 <dt>doubiduo</dt>
