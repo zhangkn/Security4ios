@@ -308,5 +308,13 @@
             </dl>
         </li>
 
+        <li>
+            <img class="picture" src="/images/head/corporation/yidonganquan.png" alt="">
+            <dl class="desc">
+                <dt>移动安全联盟</dt>
+                <dd>由国内外移动安全相关的企事业单位、高等院校、科研院所等自愿结成的跨行业、开放性的合作与促进平台</dd>
+            </dl>
+        </li>
+
     </ul>
 </section>
