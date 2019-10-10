@@ -15,7 +15,7 @@ https://www.SecurityPaper.org
 
 clone 项目到本地
 
-所有文档都在**docks**目录下，以markdown文件进行存储，可以直接保存
+所有文档都在**docs**目录下，以markdown文件进行存储，可以直接保存
 
 
 
