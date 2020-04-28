@@ -42,8 +42,8 @@
 | 下载     | 1.下载目录应被限定在固定目录内，不允许被../../等路径操作跨目录访问其他文件；                                                | 高    |            |    |
 |        | 2.敏感资源应设置访问控制权限，只允许拥有授权的角色下载；                                                             | 高    |            |    |
 | 跨域需求接口 | 使用CORS跨域时，CORS安全配置：                                                                       |      |            |    |
-|        | 1.应设置Access-Control-Allow-Origin及Origin白名单域名为京东域（xx.jd.com)；                              | 中    |            |    |
-|        | 2.只有需要携带Cookie时，才允许设置Access-Control-Allow-Credentials头，且Origin白名单必须精细化设置，不允许如*.jd.com的配置。 | 高    |            |    |
+|        | 1.应设置Access-Control-Allow-Origin及Origin白名单域名为可信域（xx.test.com)；                              | 中    |            |    |
+|        | 2.只有需要携带Cookie时，才允许设置Access-Control-Allow-Credentials头，且Origin白名单必须精细化设置，不允许如*.test.com的配置。 | 高    |            |    |
 |        | JSONP接口：                                                                                  |      |            |    |
 |        | 1.必须使用白名单严格限制请求来源referer；                                                                 | 高    |            |    |
 | 网络资源调用 | 1.应使用白名单限定允许调用的URL，特别针对内网的请求应严格限定；                                                        | 高    |            |    |
