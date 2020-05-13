@@ -207,6 +207,96 @@ nagios_backup.(2008-01-24)00:00
 #mysql –u root -p nagios  <  /home/sszheng/nfs58/nagiosbackup/nagios_backup.\(2008-01-24\)12\:00
 ```
 
+## 启用SSL连接
+mysql默认未启用SSL连接，使用wireshakr抓包可以查看执行的SQL语句和执行结果，在站库分离、主从复制、主从同步等复杂网络下，导致数据库执行过程可能会被嗅探。
+### 安装时启动SSL
+在MySQL5.7安装初始化阶段，比之前版本多了一步操作，而这个操作就是安装SSL的。
+```
+shell> bin/mysqld --initialize --user=mysql    # MySQL 5.7.6 and up
+shell> bin/mysql_ssl_rsa_setup                 # MySQL 5.7.6 and up
+```
+当运行完这个命令后，默认会在data_dir目录下生成以下pem文件，这些文件就是用于启用SSL功能的：
+```
+[root mysql_data]# ll *.pem
+-rw------- 1 mysql mysql 1675 Jun 12 17:22 ca-key.pem         #CA私钥
+-rw-r--r-- 1 mysql mysql 1074 Jun 12 17:22 ca.pem             #自签的CA证书，客户端连接也需要提供
+-rw-r--r-- 1 mysql mysql 1078 Jun 12 17:22 client-cert.pem    #客户端连接服务器端需要提供的证书文件
+-rw------- 1 mysql mysql 1675 Jun 12 17:22 client-key.pem     #客户端连接服务器端需要提供的私钥文件
+-rw------- 1 mysql mysql 1675 Jun 12 17:22 private_key.pem    #私钥/公钥对的私有成员
+-rw-r--r-- 1 mysql mysql 451 Jun 12 17:22  public_key.pem     #私钥/公钥对的共有成员
+-rw-r--r-- 1 mysql mysql 1078 Jun 12 17:22 server-cert.pem    #服务器端证书文件
+-rw------- 1 mysql mysql 1675 Jun 12 17:22 server-key.pem     #服务器端私钥文件
+```
+本地进入MySQL命令行，可以看到如下变量值：
+```
+root> mysql -h 10.126.xxx.xxx -udba -p
+```
+查看SSL开启情况
+```
+dba:(none)> show global variables like '%ssl%';
++---------------+-----------------+
+| Variable_name | Value           |
++---------------+-----------------+
+| have_openssl  | YES             |
+| have_ssl      | YES             |    #已经开启了SSL
+| ssl_ca        | ca.pem          |
+| ssl_capath    |                 |
+| ssl_cert      | server-cert.pem |
+| ssl_cipher    |                 |
+| ssl_crl       |                 |
+| ssl_crlpath   |                 |
+| ssl_key       | server-key.pem  |
++---------------+-----------------+
+```
+查看dba连接的方式
+```
+dba:(none)> \s
+--------------
+/usr/local/mysql/bin/mysql  Ver 14.14 Distrib 5.7.18, for linux-glibc2.5 (x86_64) using  EditLine wrapper
+Connection id:          2973
+Current database:
+Current user:           dba@10.126.xxx.xxx
+SSL:                    Cipher in use is DHE-RSA-AES256-SHA #表示该dba用户是采用SSL连接到mysql服务器上的，如果不是ssl，那么会显示“Not in use“
+Current pager:          more
+Using outfile:          ''
+Using delimiter:        ;
+Server version:         5.7.18-log MySQL Community Server (GPL)
+Protocol version:       10
+Connection:             10.126.126.160 via TCP/IP
+Server characterset:    utf8
+Db     characterset:    utf8
+Client characterset:    utf8
+Conn.  characterset:    utf8
+TCP port:               3306
+Uptime:                 2 hours 35 min 48 sec
+```
+* 如果用户是采用本地localhost或者sock连接数据库，那么不会使用SSL方式了。
+
+### 安装后启动SSL
+* 关闭MySQL服务
+* 运行mysql_ssl_rsa_setup 命令
+* 到data_dir目录下修改.pem文件的所属权限用户为mysql
+```
+    chown -R mysql.mysql *.pem
+```
+* 启动MySQL服务
+
+### 强制某用户必须使用SSL连接数据库
+修改已存在用户 
+```
+ALTER USER 'dba'@'%' REQUIRE SSL;
+```
+#新建必须使用SSL用户
+```
+grant select on *.* to 'dba'@'%' identified by 'xxx' REQUIRE SSL;
+```
+对于上面强制使用ssl连接的用户，如果不是使用ssl连接的就会报错，像下面这样：
+```
+[root]# /usr/local/mysql/bin/mysql -udba -p -h10.126.xxx.xxx --ssl=0
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'dba'@'10.126.xxx.xxx' (using password: YES)
+```
+
 ## Mysqld安全相关启动选项
 
 下列mysqld选项影响安全：
